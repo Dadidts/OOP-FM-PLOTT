@@ -1,15 +1,11 @@
 ﻿using MyFileManager.GUI;
 
 
-//
-int x = 177;
-int y = 46;
-
+//Задаем размеры окна консоли
+BConsole.ConsoleSize();
 //
 
-//
-BConsole.ConsoleMax(x, y);
-//
+
 
 
 

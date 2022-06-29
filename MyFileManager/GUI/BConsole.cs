@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,19 +9,10 @@ namespace MyFileManager.GUI
 {
     public class BConsole
     {
-        public static void ConsoleMax(int width, int height)
+        public static void ConsoleSize()
         {
-            Console.SetBufferSize(width, height);
-            Console.SetWindowSize(width, height);
-           
-
-
+            Console.SetBufferSize(120, 30);
         }
-
-       
-
-
-
 
     }
 }
