@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="BModel\" />
+    <Folder Include="Новая папка\Diagramm\" />
   </ItemGroup>
 
 </Project>
