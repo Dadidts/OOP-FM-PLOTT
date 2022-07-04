@@ -7,6 +7,7 @@ bool f = true;
 while (f)
 {
     //Меню выбора решения
+    Console.Clear();
     Console.WriteLine("Выберите решение задачи:");
     Console.WriteLine("1- первый вариант:");
     Console.WriteLine("2- второй вариант:");
@@ -150,7 +151,41 @@ void Menu1()
 }
 void Menu2()
 {
-    //
+
+    Account2 account = new Account2();
+    Console.WriteLine("Введите имя клиента: ");
+    account.SetClient(Console.ReadLine());
+    Console.WriteLine("Выберите тип открываемого счета: 1-Дебетовый; 2-Кредитный, 3-Универсальный");
+    int i = int.Parse(Console.ReadLine());
+
+    //Выбор типа счета
+    if (i == 1)
+    {
+        account.SetTypeAccountDebet(TypeAccount1.DEBET);
+    }
+    else if (i == 2)
+    {
+        account.SetTypeAccountCredit(TypeAccount1.CREDIT);
+    }
+    else if (i == 3)
+    {
+
+        account.SetTypeAccountMixed(TypeAccount1.MIXED);
+
+    }
+
+    Console.WriteLine("Введите вносимую сумму на счет: ");
+    account.SetBalance(decimal.Parse(Console.ReadLine()));
+    account.NewNumber();
+    account.Print();
+    Console.Write("Проверка работы методов Get для номера счета. Номер счета клиента : ");
+    Console.WriteLine(account.GetNumber());
+
+    Console.ReadLine();
+
+}
+void Menu3()
+{
 
 
 }
