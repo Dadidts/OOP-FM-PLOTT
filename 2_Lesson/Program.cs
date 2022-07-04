@@ -2,6 +2,7 @@
 using _2_Lesson.CBankOfRussia2;
 using _2_Lesson.CBankOfRussia3;
 using _2_Lesson.CBankOfRussia4;
+using _2_Lesson.CBankOfRussia5;
 
 bool f = true;
 
@@ -11,10 +12,11 @@ while (f)
     //Меню выбора решения
     Console.Clear();
     Console.WriteLine("Выберите решение задачи:");
-    Console.WriteLine("1- первый вариант:");
-    Console.WriteLine("2- второй вариант:");
-    Console.WriteLine("3- третий вариант:");
-    Console.WriteLine("4- четвертый вариант:");
+    Console.WriteLine("1- Решение ДЗ № 1:");
+    Console.WriteLine("2- Решение ДЗ № 2:");
+    Console.WriteLine("3- Решение ДЗ № 3:");
+    Console.WriteLine("4- Решение ДЗ № 4:");
+    Console.WriteLine("5- Решение ДЗ № 5:");
     Console.WriteLine("0- выход из программы:");
 
     int numMenu = int.Parse(Console.ReadLine());
@@ -82,8 +84,13 @@ while (f)
             {
                 Console.Clear();
                 Console.WriteLine("Решение Задачи №4.");
+                Console.WriteLine("Заданны параметры: Имя клиента: Станислав; № счета: (открывается автоматически); тип счета: DEBET; баланс при открытии: 100.");
+                Console.WriteLine("Операция пополнения счета на сумму 500. Снятия на 350.");
+                Console.WriteLine("После каждой операции выводится на экран остаток по счету.");
+                Console.WriteLine("Данные по 2му клиенту заводятся с консоли оператором ПО.");
+                Console.WriteLine("Операции пополнения и снятия отрабатывают по 1 разу. После каждой операции выводится остаток по счету.");
                 Console.WriteLine("==========================================================================================================");
-                Menu4();
+                Menu5();
                 break;
 
             }
@@ -163,6 +170,7 @@ void Menu1()
     Console.WriteLine(account1.GetClient());
     Console.Write("Проверка работы методов Get: Тип 2го счета: ");
     Console.WriteLine(account2.GetTypeAccount());
+    Console.WriteLine("Для выхода в основное меню нажмите любую клавишу.");
     Console.ReadLine();
     //Конец вывода результата
 
@@ -198,6 +206,7 @@ void Menu2()
     account.Print();
     Console.Write("Проверка работы методов Get для номера счета. Номер счета клиента : ");
     Console.WriteLine(account.GetNumber());
+    Console.WriteLine("Для выхода в основное меню нажмите любую клавишу.");
     Console.ReadLine();
 
 }
@@ -205,7 +214,7 @@ void Menu3()
 {
     //Значения полей по умолчанию. Используется конструктор для полей (имя, тип, баланс)
     string name = "Станислав";
-    decimal balance = 500;
+    decimal balance = 100;
     TypeAccount3 type = TypeAccount3.DEBET;
     Account3 account = new Account3(name, balance, type);
     //Конец
@@ -269,6 +278,7 @@ void Menu3()
     account4.Print();
     Console.WriteLine("====================================================");
     account5.Print();
+    Console.WriteLine("Для выхода в основное меню нажмите любую клавишу.");
     Console.ReadLine();
 
 }
@@ -276,7 +286,7 @@ void Menu4()
 {
     //Значения полей по умолчанию. Доступ к полям через свойства
     string name = "Станислав";
-    decimal balance = 500;
+    decimal balance = 100;
     TypeAccount4 type = TypeAccount4.DEBET;
     Account4 account = new Account4(name, balance, type);
     //Конец
@@ -299,9 +309,69 @@ void Menu4()
     account.Print();
     Console.WriteLine("====================================================");
     account1.Print();
+    Console.WriteLine("Для выхода в основное меню нажмите любую клавишу.");
     Console.ReadLine();
     //Конец
+    
+}
+void Menu5()
+{
+    //Значения полей по умолчанию.
+    string name = "Станислав";
+    decimal balance = 100;
+    TypeAccount5 type = TypeAccount5.DEBET;
+    Account5 account = new Account5(name, balance, type);
+    //Конец
 
+    //Проверка работы методов пополнения счета (ReplenishmentAccount) и снятия (WithdrawalAccount)
+    //Для заполненных полей значением по умолчанию.
+    account.Print();
+    decimal sum = 500;
+    //Пополнение счета
+    Console.WriteLine($"Пополнение счета: на сумму {sum}");
+    account.ReplenishmentAccount(sum);
+    Console.WriteLine($"Остаток на счете: {account.Balance}");
+    //Снятие со счета
+    sum = 350;
+    Console.WriteLine($"Снятие со счета: на сумму {sum}");
+    account.WithdrawalAccount(sum);
+    Console.WriteLine($"Остаток на счете: {account.Balance}");
+    Console.WriteLine("====================================================");
 
+    //Ввод с консоли значения полей.
+    Console.WriteLine("====================================================");
+    Console.Write("Введите имя клиента: ");
+    name = Console.ReadLine();
+    Console.WriteLine("Выберите тип открываемого счета: 1-Дебетовый; 2-Кредитный, 3-Универсальный");
+    int i = int.Parse(Console.ReadLine());
+    Console.WriteLine("Сумма первоначального взноса: ");
+    balance = decimal.Parse(Console.ReadLine());
+    type = Account5.Selection(i);
+    Account5 account1 = new Account5(name, balance, type);
+    account1.Print();
+  
+    //Проверка работы методов пополнения счета (ReplenishmentAccount) и снятия (WithdrawalAccount) для экземпляра класса с полями заполненными с консоли.
+    //Пополнение счета
+    Console.WriteLine("Введите сумму пополнения счета: ");
+    sum = decimal.Parse(Console.ReadLine());
+    account1.ReplenishmentAccount(sum);
+    Console.WriteLine($"Остаток на счете: {account1.Balance}");
+    Console.WriteLine("Для продолжения нажмите любую клавишу ");
+    Console.ReadLine();
+    //Снятие со счета
+    Console.WriteLine("Введите сумму снятия со счета: ");
+    sum = decimal.Parse(Console.ReadLine());
+    account1.WithdrawalAccount(sum);
+    Console.WriteLine($"Остаток на счете: {account1.Balance}");
+    Console.WriteLine("Для продолжения нажмите любую клавишу ");
+    Console.ReadLine();
+    //Вывод на консоль результата
+    Console.WriteLine("ВЫВОД НА КОНСОЛЬ РЕЗУЛЬТАТА РАБОТЫ ПРОГРАММЫ:");
+    account.Print();
+    Console.WriteLine("====================================================");
+    account1.Print();
+    Console.WriteLine("Для выхода в основное меню нажмите любую клавишу.");
+    Console.ReadLine();
+   
 
 }
