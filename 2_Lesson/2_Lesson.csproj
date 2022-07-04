@@ -3,12 +3,15 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>_2_Lesson</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Новая папка\Diagramm\" />
+    <Compile Remove="Diagramm\Новая папка\**" />
+    <EmbeddedResource Remove="Diagramm\Новая папка\**" />
+    <None Remove="Diagramm\Новая папка\**" />
   </ItemGroup>
 
 </Project>
