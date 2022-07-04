@@ -1,5 +1,6 @@
 ﻿using _2_Lesson.CBankOfRussia;
 using _2_Lesson.CBankOfRussia2;
+using _2_Lesson.CBankOfRussia3;
 
 bool f = true;
 
@@ -57,6 +58,7 @@ while (f)
                 Console.Clear();
                 Console.WriteLine("");
                 Console.WriteLine("");
+                Menu3();
                 break;
 
             }
@@ -186,6 +188,81 @@ void Menu2()
 }
 void Menu3()
 {
+    //Значения полей по умолчанию. Используется конструктор для полей (имя, тип, баланс)
+    string name = "Станислав";
+    decimal balance = 500;
+    TypeAccount3 type = TypeAccount3.DEBET;
+    Account3 account = new Account3(name, balance, type);
+    //Конец
+
+    //Ввод с консоли значения полей. Используется конструктор для полей (имя, тип, баланс)
+    Console.WriteLine("Работа конструктора с полями: ИМЯ, ТИП СЧЕТА, БАЛАНС");
+    Console.WriteLine("====================================================");
+    Console.WriteLine("Введите имя клиента: ");
+    name = Console.ReadLine();
+    Console.WriteLine("Выберите тип открываемого счета: 1-Дебетовый; 2-Кредитный, 3-Универсальный");
+    int i = int.Parse(Console.ReadLine());
+    Console.WriteLine("Сумма первоначального взноса: ");
+    balance = decimal.Parse(Console.ReadLine());
+    type = Account3.Selection(i);
+    Account3 account1 = new Account3(name, balance, type);
+    //Конец
+
+    //Значения полей по умолчанию. Используется конструктор для полей (имя, баланс)
+    name = "Владимир";
+    balance = 500;
+    Account3 account2 = new Account3(name, balance);
+    //Конец
+
+    //Ввод с консоли значения полей. Используется конструктор для полей (имя, баланс)
+    Console.WriteLine("Работа конструктора с полями: ИМЯ, БАЛАНС");
+    Console.WriteLine("====================================================");
+    Console.WriteLine("Введите имя клиента: ");
+    name = Console.ReadLine();
+    Console.WriteLine("Сумма первоначального взноса: ");
+    balance = decimal.Parse(Console.ReadLine());
+    Account3 account3 = new Account3(name, type);
+    //Конец
+
+    //Значения полей по умолчанию. Используется конструктор для полей (имя, тип)
+    name = "Михаил";
+    type = TypeAccount3.MIXED;
+    Account3 account4 = new Account3(name, type);
+    //Конец
+
+    //Ввод с консоли значения полей. Используется конструктор для полей (имя, тип)
+    Console.WriteLine("Работа конструктора с полями: ИМЯ, ТИП СЧЕТА");
+    Console.WriteLine("====================================================");
+    Console.WriteLine("Введите имя клиента: ");
+    name = Console.ReadLine();
+    Console.WriteLine("Выберите тип открываемого счета: 1-Дебетовый; 2-Кредитный, 3-Универсальный");
+    i = int.Parse(Console.ReadLine());
+    type = Account3.Selection(i);
+    Account3 account5 = new Account3(name, balance, type);
+    //Конец
+
+    //Вывод на консоль результата
+    Console.WriteLine("ВЫВОД НА КОНСОЛЬ РЕЗУЛЬТАТА РАБОТЫ ПРОГРАММЫ:");
+    account.Print();
+    Console.WriteLine("====================================================");
+    account1.Print();
+    Console.WriteLine("====================================================");
+    account2.Print();
+    Console.WriteLine("====================================================");
+    account3.Print();
+    Console.WriteLine("====================================================");
+    account4.Print();
+    Console.WriteLine("====================================================");
+    account5.Print();
+    Console.ReadLine();
+
+
+
+
+
+
+
+
 
 
 }

@@ -2,12 +2,47 @@
 
 public class Account3
 {
+    //Поля
     private string Number;
     private string Client;
     private decimal Balance;
     private TypeAccount3 type;
     public static int SetNumber;
+    //Конец
 
+    //Конструкторы
+    public Account3()
+    {
+
+    }
+
+    //Конструктор для 3х полей (имя, тип, баланс)
+    public Account3(string client, decimal balance, TypeAccount3 type)
+    {
+        Number = NewNumber();
+        Client = client;
+        Balance = balance;
+        this.type = type;
+
+    }
+
+    //Конструктор для полей(имя, баланс)
+    public Account3(string client, decimal balance)
+    {
+        Number = NewNumber();
+        Balance = balance;
+
+    }
+    //Конструктор для полей(имя, тип)
+    public Account3(string client, TypeAccount3 type)
+    {
+        Number = NewNumber();
+        this.type = type;
+
+    }
+    //Конец
+
+    //Методы
     public string GetNumber()
     {
         return Number;
@@ -53,6 +88,32 @@ public class Account3
         return num;
 
     }
+    //Метод публичный статичный. Для выбора типа счета. Как я до этого дошел не знаю. Этот енум тыкал как проклятый. Но 
+    //кажется вроде бы начал по тихонечку понимать. До полного еще далеко, но что то...
+    public static TypeAccount3 Selection(int i)
+    {
+        //Выбор типа счета
+        if (i == 1)
+        {
+            TypeAccount3 type = (TypeAccount3.DEBET);
+            return type;
+
+        }
+        else if (i == 2)
+        {
+            TypeAccount3 type = (TypeAccount3.CREDIT);
+            return type;
+
+        }
+        else if (i == 3)
+        {
+            TypeAccount3 type = (TypeAccount3.MIXED);
+            return type;
+
+        }
+        return 0;
+    
+    }
     public void SetTypeAccountDebet(TypeAccount3 typeAccount)
     {
 
@@ -76,7 +137,8 @@ public class Account3
     }
     public void Print()
     {
-        Console.WriteLine($"Клиентe: {Client} открыт счет №: {Number} Тип: {type} Баланс: {Balance} ");
+        Console.WriteLine($"Клиенту: {Client} открыт счет №: {Number} Тип: {type} Баланс: {Balance} ");
     }
+    //Конец
 
 }
