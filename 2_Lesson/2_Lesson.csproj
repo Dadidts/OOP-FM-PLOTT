@@ -9,7 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Diagramm\Новая папка\" />
+    <Compile Remove="Diagramm\Новая папка\**" />
+    <EmbeddedResource Remove="Diagramm\Новая папка\**" />
+    <None Remove="Diagramm\Новая папка\**" />
   </ItemGroup>
 
 </Project>
