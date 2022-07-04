@@ -47,7 +47,7 @@ while (f)
             {
                 Console.Clear();
                 Console.WriteLine("Решение задачи №2.");
-                Console.WriteLine("");
+                Console.WriteLine("==========================================================================================================");
 
                 Menu2();
                 break;
@@ -56,8 +56,8 @@ while (f)
         case 3:
             {
                 Console.Clear();
-                Console.WriteLine("");
-                Console.WriteLine("");
+                Console.WriteLine("Решение Задачи №3.");
+                Console.WriteLine("==========================================================================================================");
                 Menu3();
                 break;
 
