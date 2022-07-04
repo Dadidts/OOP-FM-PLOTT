@@ -1,6 +1,7 @@
 ﻿using _2_Lesson.CBankOfRussia;
 using _2_Lesson.CBankOfRussia2;
 using _2_Lesson.CBankOfRussia3;
+using _2_Lesson.CBankOfRussia4;
 
 bool f = true;
 
@@ -47,6 +48,7 @@ while (f)
             {
                 Console.Clear();
                 Console.WriteLine("Решение задачи №2.");
+                Console.WriteLine("Заданны параметры: отсутствуют.");
                 Console.WriteLine("==========================================================================================================");
 
                 Menu2();
@@ -57,6 +59,10 @@ while (f)
             {
                 Console.Clear();
                 Console.WriteLine("Решение Задачи №3.");
+                Console.WriteLine("Заданны параметры: Имя клиента: Станислав; № счета: (открывается автоматически); тип счета: DEBET; баланс при открытии: 100.");
+                Console.WriteLine("Заданны параметры: Имя клиента: Владимир; № счета: (открывается автоматически); тип счета: 0; баланс при открытии: 500.");
+                Console.WriteLine("Заданны параметры: Имя клиента: Михаил; № счета: (открывается автоматически); тип счета: универсальный; баланс при открытии: 0.");
+                Console.WriteLine("Данные по остальным клиентам заводятся с консоли оператором ПО.");
                 Console.WriteLine("==========================================================================================================");
                 Menu3();
                 break;
@@ -65,8 +71,19 @@ while (f)
         case 4:
             {
                 Console.Clear();
-                Console.WriteLine("");
-                Console.WriteLine("");
+                Console.WriteLine("Решение Задачи №4.");
+                Console.WriteLine("Заданны параметры: Имя клиента: Станислав; № счета: (открывается автоматически); тип счета: DEBET; баланс при открытии: 100.");
+                Console.WriteLine("==========================================================================================================");
+                Menu4();
+                break;
+
+            }
+        case 5:
+            {
+                Console.Clear();
+                Console.WriteLine("Решение Задачи №4.");
+                Console.WriteLine("==========================================================================================================");
+                Menu4();
                 break;
 
             }
@@ -91,7 +108,8 @@ Console.ReadLine();
 
 
 void Menu1()
-{    
+{ 
+    
     //Задание 1 клиента программно
     Account1 account1 = new Account1();
     account1.SetClient("Станислав");
@@ -146,8 +164,6 @@ void Menu1()
     Console.Write("Проверка работы методов Get: Тип 2го счета: ");
     Console.WriteLine(account2.GetTypeAccount());
     Console.ReadLine();
-
-
     //Конец вывода результата
 
 }
@@ -182,7 +198,6 @@ void Menu2()
     account.Print();
     Console.Write("Проверка работы методов Get для номера счета. Номер счета клиента : ");
     Console.WriteLine(account.GetNumber());
-
     Console.ReadLine();
 
 }
@@ -256,12 +271,36 @@ void Menu3()
     account5.Print();
     Console.ReadLine();
 
+}
+void Menu4()
+{
+    //Значения полей по умолчанию. Доступ к полям через свойства
+    string name = "Станислав";
+    decimal balance = 500;
+    TypeAccount4 type = TypeAccount4.DEBET;
+    Account4 account = new Account4(name, balance, type);
+    //Конец
 
+    //Ввод с консоли значения полей. Доступ к полям через свойства
+    Console.WriteLine("Заполнение полей экземпляра класса через свойства");
+    Console.WriteLine("====================================================");
+    Console.WriteLine("Введите имя клиента: ");
+    name = Console.ReadLine();
+    Console.WriteLine("Выберите тип открываемого счета: 1-Дебетовый; 2-Кредитный, 3-Универсальный");
+    int i = int.Parse(Console.ReadLine());
+    Console.WriteLine("Сумма первоначального взноса: ");
+    balance = decimal.Parse(Console.ReadLine());
+    type = Account4.Selection(i);
+    Account4 account1 = new Account4(name, balance, type);
+    //Конец
 
-
-
-
-
+    //Вывод на консоль результата
+    Console.WriteLine("ВЫВОД НА КОНСОЛЬ РЕЗУЛЬТАТА РАБОТЫ ПРОГРАММЫ:");
+    account.Print();
+    Console.WriteLine("====================================================");
+    account1.Print();
+    Console.ReadLine();
+    //Конец
 
 
 
