@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace _3_Lesson.Lesson31;
 
-namespace _3_Lesson.Lesson31
-{
-    public class TypeAccount
+
+    public enum TypeAccount
     {
+        DEBET = 1,
+        CREDIT,
+        MIXED
 
     }
-}
+
