@@ -1,7 +1,10 @@
-﻿namespace _3_Lesson.Lesson31;
+﻿using System.Collections.Generic;
+
+namespace _3_Lesson.Lesson31;
 
 public class Account
 {
+    
     //Поля
     private string _Number;
     private string _Client;
@@ -9,7 +12,6 @@ public class Account
     private TypeAccount _type;
     public static int SetNumber;
     //Конец
-
     //Свойства
     public string Number
     {
@@ -54,15 +56,8 @@ public class Account
         {
             _type = value;
         }
-    }
+    }    
     //Конец
-
-    //Конструкторы
-    public Account()
-    {
-
-    }
-
     //Конструктор для 3х полей (имя, тип, баланс, номер счета генерируется автоматически)
     public Account(string client, decimal balance, TypeAccount type)
     {
@@ -73,7 +68,6 @@ public class Account
 
     }
     //Конец
-
     //Методы
     //Метод пополнения счета
     public decimal ReplenishmentAccount(decimal sum)
@@ -93,7 +87,6 @@ public class Account
 
         return Balance = Balance - sum;
     }
-
     public string NewNumber()
     {
         Number = GeneratorNumner();
@@ -149,10 +142,12 @@ public class Account
         return 0;
 
     }
-    public void Print()
+    //мЕтод перевода
+    public string TransferFromAccount(string number, decimal amount)
     {
-        Console.WriteLine($"Клиенту: {Client} открыт счет №: {Number} Тип: {type} Баланс: {Balance} ");
-    }
+        string str=" ";
+        return str;
+    }          
 
 }
 

@@ -56,7 +56,7 @@ while (f)
             }
         default:
             {
-                Console.WriteLine();
+                Console.WriteLine("Вы ввели неверный номер задачи. Укажите верный порядковый номер задачи.");
                 break;
             }
     }
