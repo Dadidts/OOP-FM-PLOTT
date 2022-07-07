@@ -4,7 +4,9 @@ namespace _3_Lesson.Lesson31;
 
 public class Account
 {
-    
+    private static List<Account> accounts = new List<Account>();
+    private static decimal s = 0;
+
     //Поля
     private string _Number;
     private string _Client;
@@ -12,6 +14,7 @@ public class Account
     private TypeAccount _type;
     public static int SetNumber;
     //Конец
+
     //Свойства
     public string Number
     {
@@ -58,16 +61,27 @@ public class Account
         }
     }    
     //Конец
+    
     //Конструктор для 3х полей (имя, тип, баланс, номер счета генерируется автоматически)
     public Account(string client, decimal balance, TypeAccount type)
     {
-        Number = NewNumber();
+        Number = GeneratorNumner();
+        Client = client;
+        Balance = balance;
+        this.type = type;
+        accounts.Add(this);
+
+    }
+    public Account(string client, decimal balance, TypeAccount type, string number)
+    {
+        Number = number;
         Client = client;
         Balance = balance;
         this.type = type;
 
     }
     //Конец
+
     //Методы
     //Метод пополнения счета
     public decimal ReplenishmentAccount(decimal sum)
@@ -75,22 +89,11 @@ public class Account
         Balance = Balance + sum;
         return Balance;
     }
-    public decimal WithdrawalAccount(decimal sum)
+    public decimal WithdrawalTransfer(decimal sum)
     {
-        while (Balance - sum < 0)
-        {
-            Console.WriteLine($"Сумма для снятия превышает остаток. Введите сумму нятия меньше или равную остатку по счету. Остаток по счету: {Balance}");
-            Console.Write("Введите сумму для снятия: ");
-            sum = decimal.Parse(Console.ReadLine());
-
-        }
-
-        return Balance = Balance - sum;
-    }
-    public string NewNumber()
-    {
-        Number = GeneratorNumner();
-        return Number;
+       
+        Balance = Balance - sum;
+        return Balance;
 
     }
     public string GeneratorNumner()
@@ -110,44 +113,139 @@ public class Account
             {
                 temp = 1;
             }
-            num = num + temp.ToString();
+            num += temp.ToString();
 
         }
         return num;
 
     }
+
     //Метод публичный статичный. Для выбора типа счета. Как я до этого дошел не знаю. Этот енум тыкал как проклятый. Но 
     //кажется вроде бы начал по тихонечку понимать. До полного еще далеко, но что то...
     public static TypeAccount Selection(int i)
     {
+        //Выбор типа
+        switch (i)
+        {
+            case 1:
+                {
+                    TypeAccount type = (TypeAccount.DEBET);
+                    return type;
+
+                }
+            case 2:
+                {
+                    TypeAccount type = (TypeAccount.CREDIT);
+                    return type;
+
+                }
+            case 3:
+                {
+                    TypeAccount type = (TypeAccount.MIXED);
+                    return type;
+
+                }
+            default:
+                {
+                    TypeAccount type = (TypeAccount.MIXED);
+                    return type;
+
+                }
+
+            
+        }
         //Выбор типа счета
-        if (i == 1)
-        {
-            TypeAccount type = (TypeAccount.DEBET);
-            return type;
+        //if (i == 1)
+        //{
+        //    TypeAccount type = (TypeAccount.DEBET);
+        //    return type;
 
-        }
-        else if (i == 2)
-        {
-            TypeAccount type = (TypeAccount.CREDIT);
-            return type;
+        //}
+        //else if (i == 2)
+        //{
+        //    TypeAccount type = (TypeAccount.CREDIT);
+        //    return type;
 
-        }
-        else if (i == 3)
-        {
-            TypeAccount type = (TypeAccount.MIXED);
-            return type;
+        //}
+        //else if (i == 3)
+        //{
+        //    TypeAccount type = (TypeAccount.MIXED);
+        //    return type;
 
-        }
-        return 0;
+        //}
+        //else if (i != 1 && i != 2 && i != 3)
+        //{
+        //    TypeAccount type = (TypeAccount.MIXED);
+        //    return type;
+
+        //}
+        //return 0;
 
     }
-    //мЕтод перевода
-    public string TransferFromAccount(string number, decimal amount)
+    //Метод перевода
+    public bool TransferFromAccount(Account account, Account account1, decimal amount)
     {
-        string str=" ";
-        return str;
-    }          
+        account.WithdrawalTransfer(amount);
+        account1.ReplenishmentAccount(amount);
+        return true;
+    }
+    public bool TransferFrom(Account account, decimal amount)
+    {
+        if(account.Balance-amount >= 0)
+        {
+
+            return true;
+        }
+
+        else
+        {
+            
+            return false;
+        };
+    }
+    
+    
+    //Статические методы по работе с листом.
+    //Печать коллекции
+    public static void PrintAllList()
+    {
+        Console.WriteLine($"По состоянию на {DateTime.Now}");
+        s = 0;
+        foreach (Account account in accounts)
+        {
+            
+            Print(account);
+            s += account.Balance;
+
+        }
+        Console.WriteLine("========================================================================================================================");
+        Console.WriteLine($"В базе содержится {accounts.Count} записи(ей)");
+        Console.WriteLine($"Всего на балансе денежных средств: {s}");
+
+    }
+    //отдельная печать одного клиента
+    public static void Print(Account account)
+    {
+
+        Console.WriteLine($"Клиент:{account.Client} \t имеет счет №: {account.Number} Тип счета: {account.type}\t Остаток счета: {account.Balance} ");
+
+    }
+    //Поиск в коллекции
+    public Account SearchList (Account account, string search)
+    {
+
+        for (int i = 0; i < accounts.Count; i++)
+        {
+            if(search == accounts[i].Number)
+            {
+                account = accounts[i];
+                break;
+            }
+            
+        }
+        return account;
+        
+    }
 
 }
 
