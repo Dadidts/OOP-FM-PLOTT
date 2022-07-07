@@ -1,6 +1,7 @@
 ﻿using _3_Lesson;
 using _3_Lesson.Lesson31;
 using _3_Lesson.Lesson32;
+using _3_Lesson.Lesson33;
 
 public class Menu
 {
@@ -41,6 +42,7 @@ public class Menu
         Console.WriteLine("Дан текстовый файл содержащий: ФИО и e-mail. Разделитель &. Сформировать новый файл содержащий только список e-meil. Предусмотреть метод");
         Console.WriteLine("выделяющий из строки адрес почты. Метод в качестве параметра принимает строку (str), почта возвращается этой же строкой (str)");
         Console.WriteLine("==========================================================================================================");
+        MenuMenu5();
 
     }
     public void MenuMenu()
@@ -204,6 +206,10 @@ public class Menu
         ReversalString.ReversalString1();
 
     }
-
+    //Решение 3й задачи со звездочкой. Работа с файлом
+    public void MenuMenu5()
+    {
+        FileString.MyWorckFromFile();
+    }
 
 }
