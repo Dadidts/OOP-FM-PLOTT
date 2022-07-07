@@ -1,6 +1,6 @@
 ﻿using _3_Lesson;
 using _3_Lesson.Lesson31;
-using System.Collections.Generic;
+using _3_Lesson.Lesson32;
 
 public class Menu
 {
@@ -30,9 +30,9 @@ public class Menu
     {
 
         Console.WriteLine("Решение задачи №2. Переворот строки. //Проверка на полиндром.//");
-        Console.WriteLine("Заданная строка по умолчанию: 'Ехал грека через реку'. Вторую строку пользователь вводит самостоятельно, при желании.");
+        Console.WriteLine("Заданная строка по умолчанию: 'Ехал грека через реку'.");
         Console.WriteLine("==========================================================================================================");
-
+        MenuMenu4();
     }
     public void Menu3()
     {
@@ -200,7 +200,8 @@ public class Menu
     //Решение 2й задачи переворот строки
     public void MenuMenu4()
     {
- 
+
+        ReversalString.ReversalString1();
 
     }
 
