@@ -72,7 +72,3 @@ while (f)
 Console.WriteLine("Для выхода из программы нажмите любую кнопку...");
 Console.ReadLine();
 
-
-
-
-}

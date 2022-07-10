@@ -2,21 +2,19 @@
 
 internal class Building
 {
-    //Поля
-    private static int _NumberBulid;         //номер дома  УДАЛИТЬ (будем придумывать хитрый генератор начального значения) КОНЕЦ УДАЛИТЬ 
-    private float _HeightBulid;              //Высота дома
-    private float _HeightFloor;              //Высота этажа
-    private int _Apart;                      //Кол-во квартир в доме
-    private int _Floor;                      //Кол-во этажей
-    private int _ApartFloor;                 //Кол-во квартир на этаже в 1м подъезде
-    private int _Entrance;                   //Кол-во подъездов в здании
-    private int _ApartFloorEntrance;         //Кол-во квартир на этаже во всем доме
-    private bool _Landscaped;                //Дом благоустроен /да; нет/
 
-    
+    //ПОЛЯ
+    private static int _NumberBulid;         //Номер дома                               /*генерируем методом
+    private float _HeightBulid;              //Высота дома                              */*Задается пользователем и/или высчитывается программно
+    private float _HeightFloor;              //Высота этажа                             */*Задается пользователем и/или высчитывается программно
+    private int _Apart;                      //Кол-во квартир в доме                    */*Задается пользователем и/или высчитывается программно
+    private int _Floor;                      //Кол-во этажей                            */*Задается пользователем и/или высчитывается программно
+    private int _ApartFloor;                 //Кол-во квартир на этаже в 1м подъезде    */*Задается пользователем
+    private int _Entrance;                   //Кол-во подъездов в здании                */*Задается пользователем
+    private int _ApartFloorEntrance;         //Кол-во квартир на этаже во всем здании   */*Задается пользователем и/или высчитывается программно
+    private bool _Landscaped;                //Дом благоустроен /да; нет/               */*Задается пользователем
 
-
-    //Свойства
+    //СВОЙСТВА
     public float HeightBulid
     {
         get
@@ -106,18 +104,45 @@ internal class Building
         }
     }
     
+    //КОНСТРУКТОРЫ
+    internal Building()
+    {
 
+    }
 
-    //Методы
-    //Высчитываем высоту этажа
+    //МЕТОДЫ ВЫЧИСЛЕНИЯ
+    //Высчитываем кол-во квартир на этаже во всем здании
+    internal int АpartamentsPerFloorEntrance()
+    {
 
-   
+        return ApartFloorEntrance;
 
+    }
+    //Высчитываем кол-во квартир в доме
+    internal int ApartamentsBuilding()
+    {
 
+        return Apart;
 
+    }
+    //Высчитываем высоту дома
+    internal float HomeHeight()
+    {
 
+        return HeightBulid;
 
+    }
+    //Высчитываем высоту одного этажа
+    internal float FloorHeight()
+    {
 
+        return HeightFloor;
 
+    }
+    //Высчетываем кол-во этажей
+    internal int Floors()
+    {
+        return Floor;
+    }
 
 }
