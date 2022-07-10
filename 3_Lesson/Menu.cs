@@ -209,7 +209,12 @@ public class Menu
     //Решение 3й задачи со звездочкой. Работа с файлом
     public void MenuMenu5()
     {
-        FileString.MyWorckFromFile();
+    //Исходный файл
+    string path = @"C:\Users\Стас\Desktop\!LS_GB\OOP\3_Lesson\Lesson3-3\Date.txt";
+    //Файл назначение. Для записи результата
+    string path1 = @"C:\Users\Стас\Desktop\1.txt";
+    FileString.MyWorckFromFile(path, path1);
+
     }
 
 }
