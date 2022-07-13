@@ -35,22 +35,22 @@ while (f)
                 break;
 
             }
-        case 2:
+        //case 2:
             {
 
-                Console.Clear();
-                Menu menu = new Menu();
-                menu.Menu2();
-                break;
+        //        Console.Clear();
+        //        Menu menu = new Menu();
+        //        menu.Menu2();
+        //        break;
 
-            }
-        case 3:
-            {
+        //    }
+        //case 3:
+        //    {
 
-                Console.Clear();
-                Menu menu = new Menu();
-                menu.Menu3();
-                break;
+        //        Console.Clear();
+        //        Menu menu = new Menu();
+        //        menu.Menu3();
+        //        break;
 
             }
         default:

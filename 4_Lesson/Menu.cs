@@ -22,6 +22,29 @@ internal class Menu
 
     internal void MenuMenu1()
     {
+
+        var n = new Building()
+        {
+
+            HeightBulid = 55,
+            HeightFloor = 2,
+            Apart = 125,
+            Floor = 0,
+            ApartFloor = 0,
+            Entrance = 8,
+            ApartFloorEntrance = 0,
+            Landscaped = true,
+            Street = "Невская",
+
+        };
+
+
+        Console.WriteLine($"") ;
+
+
+
+        Console.ReadLine();
+
         
 
 
