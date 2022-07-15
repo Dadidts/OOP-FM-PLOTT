@@ -1,23 +1,28 @@
-﻿namespace _4_Lesson;
+﻿
+using System.Globalization;
+
+namespace _4_Lesson;
 
 internal class Building
 {
     //------------------------------------------------------------------------------------------------------------------------------------------
     //ПОЛЯ
-    private int _NumberBulid;                //Номер дома                                   **/*генерируем методом
-    private float _HeightBulid;              //Высота дома                                  */*Задается пользователем и/или высчитывается программно
-    private float _HeightFloor;              //Высота этажа                                 */*Задается пользователем и/или высчитывается программно
-    private int _Apart;                      //Кол-во квартир в доме                        */*Задается пользователем и/или высчитывается программно
-    private int _Floor;                      //Кол-во этажей                                */*Задается пользователем и/или высчитывается программно
-    private int _ApartFloor;                 //Кол-во квартир на этаже в одномм подъезде    */*Задается пользователем
-    private int _Entrance;                   //Кол-во подъездов в здании                    */*Задается пользователем
-    private int _ApartFloorEntrance;         //Кол-во квартир на этаже во всем здании       */*Задается пользователем и/или высчитывается программно
-    private bool _Landscaped;                //Дом благоустроен /да; нет/                   */*Задается пользователем
-    private string? _Street;                 //Улица                                        */*Задается пользователем
-    private int _NumberGenBulid = 0;         //Статическая переменная для хранения последнего номера дома
+
+    private int _NumberBulid;                //Номер дома                                   ***/*генерируем методом
+    private double _HeightBulid;             //Высота дома                                  ***/*Задается пользователем и/или высчитывается программно
+    private double _HeightFloor;             //Высота этажа                                 ***/*Задается пользователем и/или высчитывается программно
+    private int _Apart;                      //Кол-во квартир в доме                        ***/*Задается пользователем и/или высчитывается программно
+    private int _Floor;                      //Кол-во этажей                                ***/*Задается пользователем и/или высчитывается программно
+    private int _ApartFloor;                 //Кол-во квартир на этаже в одномм подъезде    ***/*Задается пользователем и/или высчитывается программно
+    private int _Entrance;                   //Кол-во подъездов в здании                    ***/*Задается пользователем
+    private int _ApartFloorEntrance;         //Кол-во квартир на этаже во всем здании       ***/*Задается пользователем и/или высчитывается программно
+    private bool _Landscaped;                //Дом благоустроен /да; нет/                   ***/*Задается пользователем
+    private string? _Street;                 //Улица                                        ***/*Задается пользователем
+    private static int _NumberGenBulid = 0;  //Статическая переменная для хранения последнего номера дома
     //------------------------------------------------------------------------------------------------------------------------------------------
     //СВОЙСТВА
-    public float HeightBulid
+
+    public double HeightBulid
     {
         get
         {
@@ -28,7 +33,7 @@ internal class Building
             _HeightBulid = value;
         }
     }
-    public float HeightFloor
+    public double HeightFloor
     {
         get
         {
@@ -124,103 +129,62 @@ internal class Building
         }
         set
         {
-            _NumberBulid = value;
+
+            if (_NumberBulid == 0)
+                _NumberBulid = value;
+            
         }
     }
     //------------------------------------------------------------------------------------------------------------------------------------------
-    //КОНСТРУКТОРЫ
-    //пустой конструктор
-    internal Building()
+    //КОНСТРУКТОР
+
+    public Building(double heightBulid, double heightFloor, int apart, int floor, int apartFloor, int entrance, int apartFloorEntrance, bool landscaped, string street)
     {
-
-        NumberBulid = NumberHomeAdd();
-
-    }
-
-    //Конструктор, когда все данные по зданию известны (кроме номера дома)
-    internal Building(float heightBulid, float heightFloor, int apart, int floor, int apartFloor, int entrance, int apartFloorEntrance, bool landscaped, string street)
-    {
-
-        HeightBulid = heightBulid;
-        HeightFloor = heightFloor;
-        Apart= apart;
-        Floor = floor;
-        ApartFloor= apartFloor;
-        Entrance = entrance;
-        ApartFloorEntrance = apartFloorEntrance;
-        Landscaped= landscaped;
-        Street= street;
-        NumberBulid = NumberHomeAdd();
         
-    }
+        if (heightBulid is 0)
+        {
+            HeightBulid = HomeHeight(heightFloor, floor);
+        }
+        else HeightBulid = heightBulid;
 
-    //Конструктор, когда высота дома не известна, все остальные данные известны (кроме номера дома)
-    internal Building(float heightFloor, int apart, int floor, int apartFloor, int entrance, int apartFloorEntrance, bool landscaped, string street)
-    {
+        if (heightBulid is 0)
+        {
+            HeightFloor = FloorHeight(heightBulid, floor);
+        }
+        else HeightFloor = heightFloor;
 
-        HeightBulid = HomeHeight(heightFloor, floor);
-        HeightFloor = heightFloor;
-        Apart = apart;
-        Floor = floor;
-        ApartFloor = apartFloor;
+        if (apart is 0)
+        {
+            Apart = ApartamentsBuilding(floor, entrance, apartFloor);
+        }
+        else Apart = apart;
+
+        if (floor is 0)
+        {
+            Floor = Floors(heightBulid, heightFloor);
+        }
+        else Floor = floor;
+
+        if(apartFloor is 0)
+        {
+            ApartFloor = ApartFloors(apart, floor, entrance);
+        }
+        else ApartFloor = apartFloor;        
+
+        if(apartFloorEntrance is 0)
+        {
+            ApartFloorEntrance = ApartFloorEntrances(apart,entrance);
+        }
+        else ApartFloorEntrance = apartFloorEntrance;
+
         Entrance = entrance;
-        ApartFloorEntrance = apartFloorEntrance;
+
         Landscaped = landscaped;
+
         Street = street;
+
         NumberBulid = NumberHomeAdd();
-
-    }
-
-    //Конструктор, когда высота этажа не известна, все остальные данные известны (кроме номера дома)
-    internal Building(int apart, float heightBulid, int floor, int apartFloor, int entrance, int apartFloorEntrance, bool landscaped, string street)
-    {
-
-        HeightBulid = heightBulid;
-        HeightFloor = FloorHeight(heightBulid, floor);
-        Apart = apart;
-        Floor = floor;
-        ApartFloor = apartFloor;
-        Entrance = entrance;
-        ApartFloorEntrance = apartFloorEntrance;
-        Landscaped = landscaped;
-        Street = street;
-        NumberBulid = NumberHomeAdd();
-
-    }
-
-    //Конструктор, когда кол-во квартир в доме не известно, все остальные данные известны (кроме номера дома)
-    internal Building(float heightBulid, float heightFloor, int floor, int apartFloor, int entrance, int apartFloorEntrance, bool landscaped, string street)
-    {
-
-        HeightBulid = heightBulid;
-        HeightFloor = heightFloor;
-        Apart = ApartamentsBuilding(floor, entrance, apartFloor);
-        Floor = floor;
-        ApartFloor = apartFloor;
-        Entrance = entrance;
-        ApartFloorEntrance = apartFloorEntrance;
-        Landscaped = landscaped;
-        Street = street;
-        NumberBulid = NumberHomeAdd();
-
-    }
-
-    //Конструктор, когда кол-во этажей в доме не известно, все остальные данные известны (кроме номера дома)
-    internal Building(int apart, float heightBulid, float heightFloor, int apartFloor, int entrance, int apartFloorEntrance, bool landscaped, string street)
-    {
-
-        HeightBulid = heightBulid;
-        HeightFloor = heightFloor;
-        Apart = apart;
-        Floor = Floors(heightBulid, heightFloor);
-        ApartFloor = apartFloor;
-        Entrance = entrance;
-        ApartFloorEntrance = apartFloorEntrance;
-        Landscaped = landscaped;
-        Street = street;
-        NumberBulid = NumberHomeAdd();
-
-    }
+    }    
     //------------------------------------------------------------------------------------------------------------------------------------------
     //МЕТОДЫ ВЫЧИСЛЕНИЯ
 
@@ -241,7 +205,7 @@ internal class Building
     }
    
     //Вычисляем высоту дома
-    internal float HomeHeight(float heightFloor, int floor)
+    internal double HomeHeight(double heightFloor, int floor)
     {
 
         HeightBulid = heightFloor * floor;
@@ -250,7 +214,7 @@ internal class Building
     }
     
     //Вычисляем высоту одного этажа
-    internal float FloorHeight(float heightBulid, int floor)
+    internal double FloorHeight(double heightBulid, int floor)
     {
 
         HeightFloor = heightBulid/ floor;
@@ -259,12 +223,26 @@ internal class Building
     }
     
     //Вычисляем кол-во этажей
-    internal int Floors(float heightBulid, float heightFloor)
+    internal int Floors(double heightBulid, double heightFloor)
     {
         Floor = (int)(heightBulid / heightFloor);
         return Floor;
     }
-    
+
+    //Вычисляем кол-во квартир на этаже в одномм подъезде
+    internal int ApartFloors(int apart, int floor, int entrance)
+    {
+        ApartFloor = (apart / floor / entrance);
+        return ApartFloor;
+    }
+
+    //Вычисляем кол-во квартир на 1 этаже в о всем здании
+    internal int ApartFloorEntrances(int apartFloor, int entrance)
+    {
+        ApartFloorEntrance = apartFloor * entrance;
+        return ApartFloorEntrance;
+    }
+
     //Генерация номера первого здания
     internal int NumberHome()
     {
@@ -300,7 +278,42 @@ internal class Building
 
     }
 
-    //------------------------------------------------------------------------------------------------------------------------------------------
+    //Методы печачи:
+
+    //Всего списка
+    public static Building ParseFile(string line)
+    {
+        var values = line.Split(',');
+        var street = values[0];
+        var numberBulid = int.Parse(values[1]);
+        var heightBulid = double.Parse(values[2], CultureInfo.InvariantCulture);
+        var heightFloor = double.Parse(values[3], CultureInfo.InvariantCulture);
+        var apart = int.Parse(values[4], CultureInfo.InvariantCulture);
+        var floor = int.Parse(values[5], CultureInfo.InvariantCulture);
+        var apartFloor = int.Parse(values[6], CultureInfo.InvariantCulture);
+        var entrance = int.Parse(values[7], CultureInfo.InvariantCulture);
+        var apartFloorEntrance = int.Parse(values[8], CultureInfo.InvariantCulture);
+        var landscaped = bool.Parse(values[9]);
+
+        var home = new Building(heightBulid, heightFloor, apart, floor, apartFloor, entrance, apartFloorEntrance, landscaped, street);
+
+        return home;
+    }
+
+    //Одного экземпляра
+    public static void Print(Building building)
+    {
+        Console.WriteLine("ИНФОРМАЦИЯ ПО ЖИЛОМУ ЗДАНИЮ.");
+        Console.WriteLine($"Находящемуся по адресу: улица {building.Street} дом № {building.NumberBulid}.");
+        Console.WriteLine("--------------------------------------------------------------------------------------");
+        Console.WriteLine($"Дом благоустроен: {building.Landscaped}");
+        Console.WriteLine("--------------------------------------------------------------------------------------");
+        Console.WriteLine($"1. Количество этажей: {building.Floor} Высота одного этажа: {building.HeightFloor}");
+        Console.WriteLine($"2. Количество подъездов: {building.Entrance}");
+        Console.WriteLine($"3. Количество квартир: Всего {building.Apart}. На одном этаже: в одном подъезде: {building.ApartFloor} во всем здании: {building.ApartFloorEntrance} ");
+    }
+
+} 
 
 
 
@@ -308,5 +321,3 @@ internal class Building
 
 
 
-
-}

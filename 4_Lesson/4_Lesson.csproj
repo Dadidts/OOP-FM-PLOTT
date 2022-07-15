@@ -13,4 +13,10 @@
     <Folder Include="Lesson4-3\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Lesson4-1\File\Date.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
