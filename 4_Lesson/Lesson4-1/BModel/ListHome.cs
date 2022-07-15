@@ -1,4 +1,4 @@
-﻿namespace _4_Lesson;
+﻿namespace _4_Lesson.Lesson41;
 
 internal static class ListHome
 {

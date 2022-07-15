@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace _4_Lesson;
+namespace _4_Lesson.Lesson41;
 
 public static class FileMe
 {

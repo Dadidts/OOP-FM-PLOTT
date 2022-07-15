@@ -1,7 +1,7 @@
 ﻿
 using System.Globalization;
 
-namespace _4_Lesson;
+namespace _4_Lesson.Lesson41;
 
 internal class Building
 {
@@ -303,6 +303,7 @@ internal class Building
     //Одного экземпляра
     public static void Print(Building building)
     {
+        Console.WriteLine("======================================================================================");
         Console.WriteLine("ИНФОРМАЦИЯ ПО ЖИЛОМУ ЗДАНИЮ.");
         Console.WriteLine($"Находящемуся по адресу: улица {building.Street} дом № {building.NumberBulid}.");
         Console.WriteLine("--------------------------------------------------------------------------------------");
