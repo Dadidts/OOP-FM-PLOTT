@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace _4_Lesson.Lesson41;
 
-internal class Building
+internal class Building41
 {
     //------------------------------------------------------------------------------------------------------------------------------------------
     //ПОЛЯ
@@ -138,7 +138,7 @@ internal class Building
     //------------------------------------------------------------------------------------------------------------------------------------------
     //КОНСТРУКТОР
 
-    public Building(double heightBulid, double heightFloor, int apart, int floor, int apartFloor, int entrance, int apartFloorEntrance, bool landscaped, string street)
+    public Building41(double heightBulid, double heightFloor, int apart, int floor, int apartFloor, int entrance, int apartFloorEntrance, bool landscaped, string street)
     {
         
         if (heightBulid is 0)
@@ -281,8 +281,9 @@ internal class Building
     //Методы печачи:
 
     //Всего списка
-    public static Building ParseFile(string line)
+    public static Building41 ParseFile(string line)
     {
+
         var values = line.Split(',');
         var street = values[0];
         var numberBulid = int.Parse(values[1]);
@@ -295,14 +296,16 @@ internal class Building
         var apartFloorEntrance = int.Parse(values[8], CultureInfo.InvariantCulture);
         var landscaped = bool.Parse(values[9]);
 
-        var home = new Building(heightBulid, heightFloor, apart, floor, apartFloor, entrance, apartFloorEntrance, landscaped, street);
+        var home = new Building41(heightBulid, heightFloor, apart, floor, apartFloor, entrance, apartFloorEntrance, landscaped, street);
 
         return home;
+
     }
 
     //Одного экземпляра
-    public static void Print(Building building)
+    public static void Print(Building41 building)
     {
+
         Console.WriteLine("======================================================================================");
         Console.WriteLine("ИНФОРМАЦИЯ ПО ЖИЛОМУ ЗДАНИЮ.");
         Console.WriteLine($"Находящемуся по адресу: улица {building.Street} дом № {building.NumberBulid}.");
@@ -312,6 +315,7 @@ internal class Building
         Console.WriteLine($"1. Количество этажей: {building.Floor} Высота одного этажа: {building.HeightFloor}");
         Console.WriteLine($"2. Количество подъездов: {building.Entrance}");
         Console.WriteLine($"3. Количество квартир: Всего {building.Apart}. На одном этаже: в одном подъезде: {building.ApartFloor} во всем здании: {building.ApartFloorEntrance} ");
+
     }
 
 } 

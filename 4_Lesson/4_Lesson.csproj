@@ -9,12 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Lesson4-2\" />
+    <Folder Include="Lesson4-2\Interface\" />
     <Folder Include="Lesson4-3\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="Lesson4-1\File\Date.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Lesson4-2\File\Date.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

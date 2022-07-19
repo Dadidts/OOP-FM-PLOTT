@@ -1,9 +1,10 @@
-﻿namespace _4_Lesson.Lesson41;
+﻿using System.Globalization;
 
-public static class FileMe
+namespace _4_Lesson.Lesson42;
+public static class FileInfoMe
 {
 
-    public static IEnumerable<string> EnumLines(this FileInfo file)
+    public static IEnumerable<string> EnumLines42(this FileInfo file)
     {
         using var reader = file.OpenText();
         while (!reader.EndOfStream)
@@ -12,8 +13,5 @@ public static class FileMe
             yield return line!;
         }
     }
-    
-
-
 
 }

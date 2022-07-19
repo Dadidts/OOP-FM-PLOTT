@@ -3,16 +3,16 @@
 internal static class ListHome
 {
     //
-    internal static List<Building> Homes = new List<Building>();
+    internal static List<Building41> Homes = new List<Building41>();
 
     //
 
     internal static void PrintList()
     {
-        foreach (Building building in Homes)
+        foreach (Building41 building in Homes)
         {
 
-            Building.Print(building);
+            Building41.Print(building);
 
         }
         Console.WriteLine($"Всего зданий в базе данных: {Homes.Count}");
