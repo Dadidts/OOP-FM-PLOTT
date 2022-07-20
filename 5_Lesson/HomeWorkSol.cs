@@ -1,4 +1,4 @@
-﻿namespace _5_Lesson.Lesson51;
+﻿namespace _5_Lesson;
 
 public class HomeWorkSol
 {

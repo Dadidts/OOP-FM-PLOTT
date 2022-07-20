@@ -37,9 +37,9 @@ while (flag)
         case 2:
             {
 
-                //Console.Clear();
-                //Menu menu = new Menu();
-                //menu.Menu2();
+                Console.Clear();
+                DZ homeWork = new DZ();
+                homeWork.HomeWork2();
                 break;
 
             }

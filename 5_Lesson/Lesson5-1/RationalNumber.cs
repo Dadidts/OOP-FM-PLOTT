@@ -119,7 +119,7 @@ internal class RationalNumber
 
     }
 
-    //Вычитание из рационального числа целое число
+    //Вычитание из рационального числа целого числа
     public static RationalNumber operator -(int a, RationalNumber b)
     {
 
