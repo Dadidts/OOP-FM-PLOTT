@@ -1,4 +1,6 @@
-﻿namespace _5_Lesson.Lesson51;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace _5_Lesson.Lesson51;
 
 internal struct RationalNumber
 {
@@ -209,7 +211,7 @@ internal struct RationalNumber
     public static bool operator ==(RationalNumber a, RationalNumber b)
     {
 
-        if (a.Num == b.Num || a.Den == b.Den)
+        if (a.Num == b.Num && a.Den == b.Den)
             return true;
         else
             return false;
@@ -251,7 +253,7 @@ internal struct RationalNumber
     public static bool operator <=(RationalNumber a, RationalNumber b)
     {
 
-        if (a.Num <= b.Num || a.Den <= b.Den)
+        if (a.Num <= b.Num && a.Den <= b.Den)
             return true;
         else
             return false;
@@ -261,7 +263,7 @@ internal struct RationalNumber
     public static bool operator >=(RationalNumber a, RationalNumber b)
     {
 
-        if (a.Num >= b.Num || a.Den >=b.Den)
+        if (a.Num >= b.Num && a.Den >=b.Den)
             return true;
         else
             return false;
@@ -295,7 +297,7 @@ internal struct RationalNumber
     //Переопределунный метот ToString()
     public override string ToString()
     {
-        return string.Format($"{0}/{1}", _Num, _Den);
+        return string.Format($"{Num}/{Den}");
     }
     
     //Преобразуем обыкновенную дробь (вида a/b) в десятичную типа float
@@ -317,6 +319,23 @@ internal struct RationalNumber
         return res;
 
     }
-    
+
+    //Переопределение Equals (че написал сам не понял) но вроде работает
+    public override bool Equals(object? obj)
+    {
+
+        if(obj == null || GetType() != obj.GetType())
+        {
+            return false;
+        }
+        var ob = (RationalNumber)obj;
+        return ob.Equals(this);
+
+    }
+
+    public bool Equals(RationalNumber a)
+    {
+        return Equals(a, this);
+    }
 
 }

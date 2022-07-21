@@ -3,54 +3,104 @@
 public struct ComplexNumber
 {
 
-    //Описываем поля комплексного числа
+    //Описываем полей комплексного числа
     #region
     //Поля класса
-    private double _X;               
-    private double _Y; 
-    private double _I;
+    public double _RealX;
+    public double _MnimY;
 
-    //Свойства полей
-    public double X
-    {
-        get { return _X; }
-        set { _X = value; }
-    }
 
-    public double Y
-    {
-        get { return _Y; }
-        set { _Y = value; }
-        
-    }
-    public double Im
-    {
-        get { return _I; }
-        set { _I = value; }
-    }
-    
     //Конструктор комплексного числа    
-    internal ComplexNumber(double x, double y, double i)
+    internal ComplexNumber(double x, double y)
     {
-        X = x;
-        Y = y;
-        Im = i;
+
+        _RealX = x;
+        _MnimY = y;
+
     }
+
     #endregion
 
     //МЕТОДЫ (ОПЕРАТОРЫ) РАБОТЫ С КОМПЛЕКСНЫМИ ЧИСЛАМИ
     //Сложение 2х комплексных чисел
+    public static ComplexNumber operator +(ComplexNumber a, ComplexNumber b)
+    {
+
+        ComplexNumber res = new ComplexNumber(0, 0);
+
+        res._RealX = a._RealX + b._RealX;
+        res._MnimY = a._MnimY + b._MnimY;
+
+        return res;
+
+    }
 
     //Умножение 2х комплексных чисел
+    public static ComplexNumber operator *(ComplexNumber a, ComplexNumber b)
+    {
+
+        ComplexNumber res = new ComplexNumber(0, 0);
+        res._RealX = (a._RealX* b._RealX)-(a._MnimY*b._MnimY);
+        res._MnimY = ((a._RealX * b._MnimY) + (b._RealX * a._MnimY));               
+
+        return res;
+
+    }
 
     //Вычитание 2х комплексных чисел
+    public static ComplexNumber operator -(ComplexNumber a, ComplexNumber b)
+    {
+
+        ComplexNumber res = new ComplexNumber(0, 0);
+        res._RealX = a._RealX - b._RealX;
+        res._MnimY = a._MnimY - b._MnimY;
+
+        return res;
+
+    }
 
     //Проверка на равенство
+    public static bool operator ==(ComplexNumber a, ComplexNumber b)
+    {
 
-    //Деление 2х комплексных чисел
+        if (a._RealX == b._RealX && a._MnimY == b._MnimY)
+            return true;
+        else
+            return false;
 
+    }
+
+    public static bool operator !=(ComplexNumber a, ComplexNumber b)
+    {
+        if (a != b)
+            return true;
+        else
+            return false;
+
+    }
 
     //Переопределенный метод ToString()
+    public override string ToString()
+    {
+        return string.Format($"({_RealX}, {_MnimY})");
+    }
 
+    //Переопределение Equals (че написал сам не понял) но вроде работает
+    public override bool Equals(object? obj)
+    {
+
+        if (obj == null || GetType() != obj.GetType())
+        {
+            return false;
+        }
+        var ob = (ComplexNumber)obj;
+        return ob.Equals(this);
+
+    }
+
+    public bool Equals(ComplexNumber a)
+    {
+        return Equals(a, this);
+    }
 
 }
