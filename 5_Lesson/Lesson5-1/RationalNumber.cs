@@ -1,6 +1,6 @@
 ﻿namespace _5_Lesson.Lesson51;
 
-internal class RationalNumber
+internal struct RationalNumber
 {
     #region
     //Поля класса
@@ -31,7 +31,7 @@ internal class RationalNumber
     internal RationalNumber(int num, int den)
     {
         _Num = num;
-        _Den = (den > 0) ? den : 1;
+        _Den = den;
 
     }
 
@@ -209,7 +209,7 @@ internal class RationalNumber
     public static bool operator ==(RationalNumber a, RationalNumber b)
     {
 
-        if (a == b)
+        if (a.Num == b.Num || a.Den == b.Den)
             return true;
         else
             return false;
@@ -220,7 +220,7 @@ internal class RationalNumber
     public static bool operator !=(RationalNumber a, RationalNumber b)
     {
 
-        if (a != b)
+        if (a.Num != b.Num)
             return true;
         else
             return false;
@@ -251,7 +251,7 @@ internal class RationalNumber
     public static bool operator <=(RationalNumber a, RationalNumber b)
     {
 
-        if (a <= b)
+        if (a.Num <= b.Num || a.Den <= b.Den)
             return true;
         else
             return false;
@@ -261,7 +261,7 @@ internal class RationalNumber
     public static bool operator >=(RationalNumber a, RationalNumber b)
     {
 
-        if (a >= b)
+        if (a.Num >= b.Num || a.Den >=b.Den)
             return true;
         else
             return false;
@@ -270,7 +270,7 @@ internal class RationalNumber
     //++ рациональное число
     public static RationalNumber operator ++(RationalNumber a)
     {
-        int i = 1;
+        const int i = 1;
         RationalNumber res = new RationalNumber(1, 1);
 
         res = a + i;
@@ -282,7 +282,7 @@ internal class RationalNumber
     //-- рациональное число
     public static RationalNumber operator --(RationalNumber a)
     {
-        int i = 1;
+        const int i = 1;
         RationalNumber res = new RationalNumber(1, 1);
 
         res = a - i;
@@ -297,5 +297,26 @@ internal class RationalNumber
     {
         return string.Format($"{0}/{1}", _Num, _Den);
     }
+    
+    //Преобразуем обыкновенную дробь (вида a/b) в десятичную типа float
+    public static float ToFloat(RationalNumber a)
+    {
+
+        float res = a.Num / a.Den;
+        
+        return res;
+
+    }
+    
+    //Преобразование обыкновенной дроби (вида a/b) в целое число типа int
+    public static int ToInt(RationalNumber a)
+    {
+
+        int res = a.Num / a.Den;
+
+        return res;
+
+    }
+    
 
 }
