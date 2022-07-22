@@ -1,5 +1,5 @@
 ﻿using _6_Lesson.Lesson61;
-using _6_Lesson.Lesson62;
+//using _6_Lesson.Lesson62;
 namespace _6_Lesson;
 
 internal class DZ
@@ -10,9 +10,10 @@ internal class DZ
 
         //Вывод перед началом работы программы.
         Console.WriteLine("Решение задачи №1. ");
-        Console.WriteLine("");
-        Console.WriteLine("");
-        Console.WriteLine("");
+        Console.WriteLine("Для класса банковский счет переопределить операторы == и != для сравнения информации в двух счетах.");
+        Console.WriteLine("Переопределить метод Equals аналогично оператору ==, не забыть переопределить метод GetHashCode(). ");
+        Console.WriteLine("Переопределить методToString() для печати информации о счете. Протестировать функционирование ");
+        Console.WriteLine("переопределенных методов и операторов на простом примере.");
         Console.ReadLine();
 
         SolHomeWorck1();
@@ -46,19 +47,6 @@ internal class DZ
        
         Console.ReadLine();
     }
-    private static int Numbers(string message)
-    {
-        do
-        {
-            Console.Write(message);
-            string text = Console.ReadLine();
-            int result;
-            if (int.TryParse(text, out result))
-            {
-                return result;
-            }
-        }
-        while (true);
-    }
+    
 
 }

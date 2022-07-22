@@ -11,7 +11,7 @@ while (flag)
     Console.WriteLine("2- Решение задачи ДЗ № 2:");
     Console.WriteLine("0- выход из программы:");
 
-    int numMenu = int.Parse(Console.ReadLine());
+    int numMenu = Numbers("Введите номер: ");
     //Конец меню
 
     //Выбор решения задания
@@ -61,3 +61,18 @@ while (flag)
 
 Console.WriteLine("Для выхода из программы нажмите любую кнопку...");
 Console.ReadLine();
+
+static int Numbers(string message)
+{
+    do
+    {
+        Console.Write(message);
+        string text = Console.ReadLine();
+        int result;
+        if (int.TryParse(text, out result))
+        {
+            return result;
+        }
+    }
+    while (true);
+}

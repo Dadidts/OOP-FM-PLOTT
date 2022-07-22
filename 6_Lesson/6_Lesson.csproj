@@ -16,4 +16,10 @@
     <ProjectReference Include="..\Bank\Bank.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Lesson6-1\Infrastructure\BaseClient.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
