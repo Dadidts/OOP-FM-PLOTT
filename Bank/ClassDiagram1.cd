@@ -1,17 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Bank.BankClients">
-    <Position X="3.25" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAGAAAAEAAAQQAAkABAAAAAAAAAAAAAAAAAAEAEg=</HashCode>
-      <FileName>BankClients.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="Bank.Account">
     <Position X="6" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAQQIAAAAAggAAAAAAAAAQAAAAAADAA=</HashCode>
+      <HashCode>AAABAAAAAAAAAAAQIAAAAAgAAAAAAAAAgQAAAAAADAA=</HashCode>
       <FileName>Account.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -21,6 +13,14 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAAAAAAEABAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Client.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Bank.BankClient">
+    <Position X="3.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAACAAAEA=</HashCode>
+      <FileName>BankClients.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -41,7 +41,7 @@
   <Interface Name="Bank.IAccount" Collapsed="true">
     <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAQAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IAccount.cs</FileName>
     </TypeIdentifier>
   </Interface>

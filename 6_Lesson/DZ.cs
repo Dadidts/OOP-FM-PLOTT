@@ -16,37 +16,22 @@ internal class DZ
         Console.WriteLine("переопределенных методов и операторов на простом примере.");
         Console.ReadLine();
 
-        SolHomeWorck1();
+        DZ1.SolHomeWorck1();
 
     }
     //Начало решения задачи № 2
-    internal void HomeWork2()
-    {
+    //internal void HomeWork2()
+    //{
 
-        Console.WriteLine("Решение задачи №2. ");
-        Console.WriteLine("");
-        Console.WriteLine("");
-        Console.WriteLine("");
-        Console.ReadLine();
+    //    Console.WriteLine("Решение задачи №2. ");
+    //    Console.WriteLine("");
+    //    Console.WriteLine("");
+    //    Console.WriteLine("");
+    //    Console.ReadLine();
 
-        SolHomeWorck2();
-    }
+    //    SolHomeWorck2();
+    //}
 
-    internal void SolHomeWorck1()
-    {
-        
-        Console.Clear();
-
-        Console.ReadLine();
-
-    }
-
-    internal void SolHomeWorck2()
-    {
-        Console.Clear();
-       
-        Console.ReadLine();
-    }
     
 
 }

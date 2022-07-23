@@ -1,19 +1,32 @@
 ﻿namespace Bank;
 
-internal class Account : IAccount
+public class Account : IAccount
 {
 
     private static string? _AccountNumber;
     private TypeAccount _Type;
     private decimal _Balance { get => _Balance; set => _Balance = value; }
 
-    private Account(decimal balance, TypeAccount type)
+    public Account(TypeAccount type)
     {
         _AccountNumber = GeneratorAccount();
         _Type = type;
-        _Balance = balance;
+        _Balance = GeneratorBalance();
         
     }
+
+    //Генератор баланса
+    private static decimal  GeneratorBalance()
+    {
+        
+        Random random = new Random();
+        decimal balance = random.Next(0,9999);
+
+        
+        return balance;
+
+    }
+
     //Генератор счета
     private static string GeneratorAccount()
     {
@@ -62,6 +75,7 @@ internal class Account : IAccount
         ReplenishmentAccount(amount);
         return true;
     }
+
     private bool TransferFrom(Account account, decimal amount)
     {
         if (_Balance - amount >= 0)
