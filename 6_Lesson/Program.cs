@@ -39,7 +39,6 @@ while (flag)
 
                 Console.Clear();
                 DZ homeWork = new DZ();
-                homeWork.HomeWork2();
                 break;
 
             }

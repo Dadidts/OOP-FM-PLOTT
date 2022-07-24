@@ -1,10 +1,17 @@
-﻿namespace _6_Lesson;
-using _6_Lesson.Lesson61;
+﻿using _6_Lesson.Lesson61.Infrastructure;
+using Bank;
+
+namespace _6_Lesson;
+
+
 
 internal class DZ1
 {
+    const string date_file_path = @"C:\Users\Стас\Desktop\!LS_GB\OOP\6_Lesson\Lesson6-1\Infrastructure\BaseClient.txt";
+
     internal static void SolHomeWorck1()
     {
+        
         bool flag = true;
 
         Console.Clear();
@@ -12,8 +19,8 @@ internal class DZ1
         {
             //Меню выбора решения
             Console.Clear();
-            Console.WriteLine("1- Создать базу клиентов из файла(без открытия счета и зачисления на остаток: ");
-            Console.WriteLine("2- Создать базу клиентов банка из файла (создать базу клиентов из файла, открыть счета каждому клиенту и зачислить на остаток: ");
+            Console.WriteLine("1- Создать базу клиентов из файла, открыть счета каждому клиенту и зачислить на остаток: ");
+            Console.WriteLine(": ");
             Console.WriteLine("3- Сравнить 2 аккаунта (клиент, счет, баланс) (рандомных или указанных пользователем по id клиенту): ");
             Console.WriteLine("0- выход из программы:");
 
@@ -35,20 +42,22 @@ internal class DZ1
                     {
 
                         Console.Clear();
-                        DZ homeWork = new DZ();
-                        homeWork.HomeWork1();
+                        CASE1();
+                        Console.WriteLine("BASE CLIENT BANK CREATE.");
+                        Console.ReadLine();
                         break;
 
                     }
-                //case 2:
-                //    {
+                case 2:
+                    {
 
-                //        //Console.Clear();
-                //        //DZ homeWork = new DZ();
-                //        //homeWork.HomeWork2();
-                //        //break;
+                        Console.Clear();
+                        CASE2();
+                        Console.ReadLine();
 
-                //    }
+                        break;
+
+                    }
                 default:
                     {
                         Console.WriteLine("Вы ввели неверный номер задачи. Укажите верный порядковый номер задачи.");
@@ -84,7 +93,28 @@ internal class DZ1
         while (true);
     }
 
+    public static void CASE1()
+    {
+                
+        var date_file = MeFile.FunctionRead(date_file_path);
 
+        foreach (var line in date_file.EnumLines())
+        {
+
+            var client = BaseClient.ParseFile(line);
+            var accountClient = BaseClient.NewAccountClient(client);
+
+        }
+        
+
+    }
+
+    public static void CASE2()
+    {
+
+        AccountClient.PrintAll();
+
+    }
 
 
 

@@ -9,10 +9,10 @@ internal class BaseClient
     {
 
         var values = line.Split(' ');
+
         var firstName = values[0];
         var lastName = values[1];
-        var patronymic = values[2];
-       
+        var patronymic = values[2];       
 
         var client = InterfaceBank.NewClient(firstName, lastName, patronymic);
 

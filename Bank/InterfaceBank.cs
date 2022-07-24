@@ -14,9 +14,11 @@ public static class InterfaceBank
 
     public static AccountClient NewAccountClient(Client client)
     {
+
         var rnd = new Random();
-        var num =  rnd.Next(0,4);
+        var num =  rnd.Next(1,4);
         TypeAccount type = (TypeAccount)num;
+        
         var account = new Account(type);
 
         return new AccountClient(client, account);

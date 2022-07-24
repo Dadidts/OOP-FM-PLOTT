@@ -3,15 +3,17 @@
 public class Account : IAccount
 {
 
-    private static string? _AccountNumber;
+    private readonly string? _AccountNumber;
     private TypeAccount _Type;
-    private decimal _Balance { get => _Balance; set => _Balance = value; }
+    private decimal _Balance;
+
+    public decimal Balance { get => _Balance; set => _Balance = value; }
 
     public Account(TypeAccount type)
     {
         _AccountNumber = GeneratorAccount();
         _Type = type;
-        _Balance = GeneratorBalance();
+        Balance = GeneratorBalance();
         
     }
 
@@ -20,8 +22,7 @@ public class Account : IAccount
     {
         
         Random random = new Random();
-        decimal balance = random.Next(0,9999);
-
+        decimal balance = random.Next(0,999);
         
         return balance;
 
@@ -90,5 +91,10 @@ public class Account : IAccount
             return false;
         };
     }
-    
+
+    public override string ToString()
+    {
+        return string.Format($" Номер счета: {_AccountNumber, 8} Тип счета: {_Type, 8} остаток: {Balance,8}");
+    }
+        
 }

@@ -7,10 +7,11 @@ public class Client:IClient
     private readonly string _Patronymic;
     private readonly int _Id;
     private static int SetId = 0;
-    private static List<Client> clients = new List<Client>();
+    public static List<Client> clients = new List<Client>();
 
     public Client(string firstName, string lastName, string patronymic)    
     {
+
         _FirstName = firstName;
         _LastName = lastName;
         _Patronymic = patronymic;
@@ -26,18 +27,12 @@ public class Client:IClient
         return id;
     }
 
-    private static void PrintAll()
+    public override string ToString()
     {
-        foreach(Client client in clients)
-        {
-            clients.ToString();
-        }
-    }
 
-    //public override string ToString()
-    //{
-    //    return ToString($"ID: {_Id} Фамилия: {_FirstName} Имя: {_LastName} Отчество: {_Patronymic}");
-    //}
+        return string.Format($"КЛИЕНТ: ID: {_Id} Фамилия: {_FirstName, 15}\t Имя: {_LastName, 15}\t Отчетсво: {_Patronymic, 15}\t");
+    
+    }
 
 
 }

@@ -1,13 +1,13 @@
 ﻿namespace Bank;
 
-public class AccountClient:IBankClient
+public class AccountClient:IBankClient, IEquatable<AccountClient?>
 {
 
     /*Поля*/
     /*----------------------------------------------------------------------------------------------------------------------------------------------------*/    
     private readonly Client _ClientBank;
     private readonly Account? _Account;   
-    private static List<AccountClient> banksClient = new List<AccountClient>();
+    public static List<AccountClient> banksClient = new List<AccountClient>();
     
     /*----------------------------------------------------------------------------------------------------------------------------------------------------*/
     /*Свойства*/
@@ -17,7 +17,7 @@ public class AccountClient:IBankClient
     
     /*----------------------------------------------------------------------------------------------------------------------------------------------------*/
     /*Конструкторы*/
-    internal AccountClient(Client client, Account account)
+    public AccountClient(Client client, Account account)
     {
 
         _ClientBank = client;
@@ -27,17 +27,43 @@ public class AccountClient:IBankClient
 
     }
 
-    internal AccountClient(Client client)
+    /*МЕТОДЫ КЛАССА*/
+    /*----------------------------------------------------------------------------------------------------------------------------------------------------*/
+    public override string ToString()
+    {
+        return string.Format(_ClientBank.ToString() + _Account!.ToString());
+       
+    }
+
+    
+
+    public static void PrintAll()
+    {
+        foreach(AccountClient client in banksClient)
+        {
+            Console.WriteLine(client.ToString());
+        }
+    }
+
+    public override bool Equals(object? obj)
     {
 
-        _ClientBank = client;
-        _Account = null;
-
-        banksClient.Add(this);
+        if(obj is AccountClient accountClient)
+            return _ClientBank == accountClient._ClientBank && _Account == accountClient._Account;
+        return false;
 
     }
 
-    /*МЕТОДЫ КЛАССА*/
-    /*----------------------------------------------------------------------------------------------------------------------------------------------------*/
+    public bool Equals(AccountClient? other)
+    {
+        return _ClientBank == other.ClientBank && _Account == other._Account;
+    }
 
+    public override int GetHashCode()
+    {
+        var hash = 11;
+        hash = hash * _ClientBank.GetHashCode();
+        hash = hash * _Account.GetHashCode();
+        return hash;
+    }
 }
