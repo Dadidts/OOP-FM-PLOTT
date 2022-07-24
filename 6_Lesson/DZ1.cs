@@ -20,11 +20,11 @@ internal class DZ1
             //Меню выбора решения
             Console.Clear();
             Console.WriteLine("1- Создать базу клиентов из файла, открыть счета каждому клиенту и зачислить на остаток: ");
-            Console.WriteLine(": ");
+            Console.WriteLine("2- Печать (Вывод на экран) базы клиентов(ID, ФИО, номер счета, тип счета, остаток: ");
             Console.WriteLine("3- Сравнить 2 аккаунта (клиент, счет, баланс) (рандомных или указанных пользователем по id клиенту): ");
             Console.WriteLine("0- выход из программы:");
 
-            int numMenu = Numbers("Выберите действие: ");
+            int numMenu = NumbersMenu.Numbers("Выберите действие: ");
             //Конец меню
 
             //Выбор решения задания
@@ -45,6 +45,7 @@ internal class DZ1
                         CASE1();
                         Console.WriteLine("BASE CLIENT BANK CREATE.");
                         Console.ReadLine();
+
                         break;
 
                     }
@@ -58,6 +59,16 @@ internal class DZ1
                         break;
 
                     }
+                case 3:
+                    {
+
+                        Console.Clear();
+                        CASE3();
+                        Console.ReadLine();
+
+                        break;
+                    }
+
                 default:
                     {
                         Console.WriteLine("Вы ввели неверный номер задачи. Укажите верный порядковый номер задачи.");
@@ -78,21 +89,7 @@ internal class DZ1
         Console.ReadLine();
 
     }
-    public static int Numbers(string message)
-    {
-        do
-        {
-            Console.Write(message);
-            string text = Console.ReadLine();
-            int result;
-            if (int.TryParse(text, out result))
-            {
-                return result;
-            }
-        }
-        while (true);
-    }
-
+    
     public static void CASE1()
     {
                 
@@ -113,6 +110,11 @@ internal class DZ1
     {
 
         AccountClient.PrintAll();
+
+    }
+
+    public static void CASE3()
+    {
 
     }
 
