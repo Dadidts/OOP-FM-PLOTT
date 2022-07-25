@@ -20,10 +20,10 @@ public class Account : IAccount
     //Генератор баланса
     private static decimal  GeneratorBalance()
     {
-        
-        Random random = new Random();
-        decimal balance = random.Next(0,999);
-        
+
+        decimal balance = NewRandomDecimal(0, 9999);
+
+
         return balance;
 
     }
@@ -94,7 +94,16 @@ public class Account : IAccount
 
     public override string ToString()
     {
+
         return string.Format($" Номер счета: {_AccountNumber, 8} Тип счета: {_Type, 8} остаток: {Balance,8}");
+
     }
-        
+    private static decimal NewRandomDecimal(int x, int y)
+    {
+
+        Random random = new Random();
+        return random.Next(x, y); 
+            
+    }
+
 }

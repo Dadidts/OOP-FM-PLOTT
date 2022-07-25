@@ -33,9 +33,7 @@ public class AccountClient:IBankClient, IEquatable<AccountClient?>
     {
         return string.Format(_ClientBank.ToString() + _Account!.ToString());
        
-    }
-
-    
+    }   
 
     public static void PrintAll()
     {
@@ -65,5 +63,19 @@ public class AccountClient:IBankClient, IEquatable<AccountClient?>
         hash = hash * _ClientBank.GetHashCode();
         hash = hash * _Account.GetHashCode();
         return hash;
+    }
+
+    public static AccountClient SearchAcc(int i)
+    {
+        
+        return banksClient[i];
+
+    }
+
+    public static AccountClient SearchAccId(int i)
+    {
+
+        return banksClient[i];
+
     }
 }

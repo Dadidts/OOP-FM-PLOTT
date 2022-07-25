@@ -11,7 +11,7 @@ internal class DZ1
 
     internal static void SolHomeWorck1()
     {
-        
+
         bool flag = true;
 
         Console.Clear();
@@ -89,10 +89,10 @@ internal class DZ1
         Console.ReadLine();
 
     }
-    
+
     public static void CASE1()
     {
-                
+
         var date_file = MeFile.FunctionRead(date_file_path);
 
         foreach (var line in date_file.EnumLines())
@@ -102,7 +102,7 @@ internal class DZ1
             var accountClient = BaseClient.NewAccountClient(client);
 
         }
-        
+
 
     }
 
@@ -116,8 +116,102 @@ internal class DZ1
     public static void CASE3()
     {
 
+        Console.WriteLine("Сравнить рандомные 2 счета или вы введете ID для сравнения самомстоятельно?:");
+        Console.WriteLine("1: - рандомные 2 счета");
+        Console.WriteLine("2: - введете ID для сравнения");
+        int numMenu = NumbersMenu.Numbers("Выберите действие: ");
+
+        switch (numMenu)
+        {
+            case 0:
+                {
+
+                    Console.Clear();
+                    Console.WriteLine("Выйти в верхнее меню");
+                    break;
+
+                }
+            case 1:
+                {
+
+                    Console.Clear();
+                    CASE31();
+
+                    Console.ReadLine();
+
+                    break;
+
+                }
+            case 2:
+                {
+                    Console.Clear();
+                    CASE32();
+
+                    Console.ReadLine();
+
+                    break;
+
+                }
+            default:
+                {
+
+                    Console.WriteLine("Вы выбрали неверное действие. Прочтите внимательно еще раз и выберите действие: ");
+                    break;
+                }
+        }
+
+        if (numMenu == 0)
+        {
+            return;
+        }
+
+    }
+   
+    public static void CASE31()
+    {
+
+        int acc1 = NumbersMenu.NewRandom(0, 149);
+        int acc2 = NumbersMenu.NewRandom(0, 149);
+
+        PrintConsole(acc1, acc2);
+
     }
 
+    public static void CASE32()
+    {
+        int [] arrayId = new int[2];
+
+        for(int i=0; i < 2; i++)
+        {
+            int num = NumbersMenu.Numbers("Введите номер ID клиента, для сравнения информации с другим клиентом банка (Значение ID от 0 до 147): ");
+            arrayId[i] = num; 
+
+        }
+
+        int acc1 = arrayId[0];
+        int acc2 = arrayId[1];
+
+        PrintConsole(acc1, acc2);
+
+    }
+
+    public static void PrintConsole(int acc1, int acc2)
+    {
+
+        var account1 = AccountClient.SearchAcc(acc1);
+        var account2 = AccountClient.SearchAcc(acc2);
+
+        Console.WriteLine($" Сравнение переопределенным методом Equals 2 счета:");
+        Console.WriteLine($"{account1}");
+        Console.WriteLine($"  и ");
+        Console.WriteLine($"{account2}. ");
+        Console.WriteLine($"Результат: {account1.Equals(account2)} ");
+
+        //Вот тут не очень понятно, как вывести значение и как их сравнить
+        Console.WriteLine($" ХэшКод первого счета: {account1.GetHashCode}");
+        Console.WriteLine($" ХэшКод второго счета: {account2.GetHashCode}");
+
+    }
 
 
 

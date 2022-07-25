@@ -22,5 +22,11 @@ namespace _6_Lesson
             }
             while (true);
         }
+
+        public static int NewRandom(int x, int y)
+        {
+            Random random = new Random();
+            return random.Next(x,y);
+        }
     }
 }
