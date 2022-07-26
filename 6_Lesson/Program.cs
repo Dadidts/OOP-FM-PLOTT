@@ -1,5 +1,7 @@
 ﻿using _6_Lesson;
 
+Console.SetBufferSize(120, 30);
+
 bool flag = true;
 
 while (flag)
@@ -41,6 +43,7 @@ while (flag)
 
                 Console.Clear();
                 DZ homeWork = new DZ();
+                homeWork.HomeWork2();
                 break;
 
             }

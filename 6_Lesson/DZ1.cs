@@ -3,10 +3,9 @@ using Bank;
 
 namespace _6_Lesson;
 
-
-
 internal class DZ1
 {
+
     const string date_file_path = @"C:\Users\Стас\Desktop\!LS_GB\OOP\6_Lesson\Lesson6-1\Infrastructure\BaseClient.txt";
 
     internal static void SolHomeWorck1()
@@ -212,8 +211,5 @@ internal class DZ1
         Console.WriteLine($" ХэшКод второго счета: {account2.GetHashCode}");
 
     }
-
-
-
 
 }

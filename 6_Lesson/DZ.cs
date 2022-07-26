@@ -1,5 +1,4 @@
-﻿using _6_Lesson.Lesson61;
-//using _6_Lesson.Lesson62;
+﻿//using _6_Lesson.Lesson62;
 namespace _6_Lesson;
 
 internal class DZ
@@ -20,18 +19,22 @@ internal class DZ
 
     }
     //Начало решения задачи № 2
-    //internal void HomeWork2()
-    //{
+    internal void HomeWork2()
+    {
 
-    //    Console.WriteLine("Решение задачи №2. ");
-    //    Console.WriteLine("");
-    //    Console.WriteLine("");
-    //    Console.WriteLine("");
-    //    Console.ReadLine();
+        Console.WriteLine("Решение задачи №2. ");
+        Console.WriteLine("Создать класс Figure для работы с геометрическими фигурами. В качестве полей класса задаются цвет фигуры,");
+        Console.WriteLine("состояние «видимое/невидимое». Реализовать операции: передвижение геометрической фигуры по горизонтали, по вертикали, изменение цвета,");
+        Console.WriteLine("опрос состояния (видимый/невидимый). Метод вывода на экран должен выводить состояние всех полей объекта. Создать класс Point (точка) ");
+        Console.WriteLine("как потомок геометрической фигуры. Создать класс Circle (окружность) как потомок точки. В класс Circle добавить метод, который вычисляет");
+        Console.WriteLine("площадь окружности. Создать класс Rectangle (прямоугольник) как потомок точки, реализовать метод вычисления площади прямоугольника. Точка,");
+        Console.WriteLine("окружность, прямоугольник должны поддерживать методы передвижения по горизонтали и вертикали, изменения цвета.");
 
-    //    SolHomeWorck2();
-    //}
+        Console.ReadLine();
 
-    
+        DZ2.SolHomeWorck2();
+    }
+
+
 
 }
