@@ -1,24 +1,28 @@
 ﻿using _6_Lesson;
 
-Console.SetBufferSize(120, 30);
+//const int Width = 120;
+//const int Height = 30;
+
+
+//Console.SetBufferSize(Width, Height);
 
 bool flag = true;
 
 while (flag)
 {
-   
-    
+
+
     Console.Clear();
     Console.WriteLine("Выберите решение задачи:");
     Console.WriteLine("1- Решение задачи ДЗ № 1:");
     Console.WriteLine("2- Решение задачи ДЗ № 2:");
     Console.WriteLine("0- выход из программы:");
 
-    
+
     int numMenu = NumbersMenu.Numbers("Введите номер: ");
     //Конец меню
 
-    
+
     switch (numMenu)
     {
         case 0:
@@ -54,7 +58,7 @@ while (flag)
             }
     }
 
-    
+
     if (numMenu == 0)
     {
         return;

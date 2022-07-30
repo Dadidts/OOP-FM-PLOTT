@@ -7,6 +7,7 @@ namespace _6_Lesson.Lesson62;
 /// </summary>
 abstract class Figure
 {
+    protected Direction direction;
 
     protected ConsoleColorEnum _ColorFigure = ConsoleColorEnum.White;
     protected bool _Status;
@@ -16,7 +17,7 @@ abstract class Figure
     /// <summary>
     /// Метод рисование фигуры
     /// </summary>
-    protected void Draw()
+    internal void Draw()
     {
 
         foreach (Point point in pList)
@@ -79,7 +80,39 @@ abstract class Figure
 
     }
 
+    internal void HandliKey(ConsoleKey key)
+    {
+        switch (key)
+        {
+            case (ConsoleKey.LeftArrow):
+                {
+                    Direction direction = Direction.LEFT;
+                    break;
+                }
+            case (ConsoleKey.RightArrow):
+                {
+                    Direction direction = Direction.RIGHT;
+                    break;
+                }
+            case (ConsoleKey.UpArrow):
+                {
+                    Direction direction = Direction.UP;
+                    break;
+                }
+            case (ConsoleKey.DownArrow):
+                {
+                    Direction direction = Direction.DOWN;
+                    break;
+                }
+        }
+
+    }
+
+
+    protected abstract double Square(double x, double y);
     protected abstract double Square();
+    protected abstract double Square(double x);
+
 
 
 

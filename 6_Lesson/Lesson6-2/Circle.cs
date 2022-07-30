@@ -3,6 +3,7 @@ namespace _6_Lesson.Lesson62;
 
 internal class Circle : Figure
 {
+    
     private Point? _centr;
 
     private readonly double _radius;
@@ -17,12 +18,15 @@ internal class Circle : Figure
         pList = new List<Point>();
         pList.Add(point);
         _radius = radius;
-        double a = 360 / _radius;
+        double a = 90 / _radius;
+        double b = 360 / a;
+        double temp = a;
 
-        for (double i = 0; i <= a; i = i++)
+        for (int i = 0; i <= b; i++)
         {
 
             pList.Add(PointPosition(point, radius, a));
+            a = a + temp;
 
         }
 
@@ -36,12 +40,28 @@ internal class Circle : Figure
         point1.x = (int)(point.x + radius * Math.Cos(a));
         point1.y = (int)(point.y + radius * Math.Sin(a));
 
-        return point;
+        return point1;
 
 
     }
+    protected override double Square(double radius)
+    {
+        double sqr=Math.PI*radius*radius;
+
+        return sqr;
+    }
     protected override double Square()
     {
-        throw new NotImplementedException();
+        double x = 0;
+        return x;
+    }
+    protected override double Square(double x, double y)
+    {
+        return x;
+    }
+
+    internal void Move()
+    {
+
     }
 }
